@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruth Oyun - Project Management Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .project-card p {
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .tool-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tool-card p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .tool-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .tool-features li {
+            padding: 5px 0;
+            opacity: 0.9;
+        }
+
+        .tool-features li::before {
+            content: "✓ ";
+            color: #a8e6cf;
+            font-weight: bold;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .summary h2 {
+            color: white;
+        }
+
+        .summary h2::after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .project-grid,
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Ruth Oyun Damilola</h1>
+            <p>Water Resources & Environmental Engineering Graduate | Aspiring Project Manager</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>Oyun.ruth@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+234 708 051 9539</span>
+                </div>
+                <div class="contact-item">
+                    <span>🔗</span>
+                    <a href="https://www.linkedin.com/in/ruth-oyun-356a41237" target="_blank" style="color: #34495e; text-decoration: none;">LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section summary">
+            <h2>Professional Summary</h2>
+            <p>Detail-oriented engineering graduate with hands-on project management experience across water treatment operations, construction safety, and community engagement. Skilled in project planning, risk management, and stakeholder coordination with proficiency in modern PM tools including Trello, Asana, and MS Project. Seeking to leverage technical expertise and leadership capabilities in a project management internship role.</p>
+            <a href="#projects" class="cta-button">View My Projects</a>
+        </div>
+
+        <!-- Project Portfolio -->
+        <div class="section" id="projects">
+            <h2>Project Portfolio</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Water Treatment Plant Operations Management</h3>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> June 2023 - October 2023</span>
+                        <span><strong>Location:</strong> Lower Usuma Dam, Abuja</span>
+                    </div>
+                    <p><strong>Challenge:</strong> Ensuring consistent operational efficiency and water quality standards at a major water treatment facility serving the FCT.</p>
+                    <p><strong>My Role:</strong> Operations Monitoring Coordinator & Quality Analyst</p>
+                    <p><strong>Key Achievements:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Implemented daily monitoring protocols that maintained 99%+ operational efficiency</li>
+                        <li>Coordinated with Dam Safety Unit on infrastructure integrity assessments</li>
+                        <li>Conducted comprehensive laboratory testing ensuring water quality compliance</li>
+                        <li>Developed reporting systems for stakeholder communication</li>
+                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-tag">Process Monitoring</span>
+                        <span class="skill-tag">Quality Assurance</span>
+                        <span class="skill-tag">Cross-functional Collaboration</span>
+                        <span class="skill-tag">Risk Management</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Construction Site Safety Implementation</h3>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> March 2022 - June 2022</span>
+                        <span><strong>Location:</strong> Dutum Company Limited, Lagos</span>
+                    </div>
+                    <p><strong>Challenge:</strong> Implementing comprehensive safety protocols on an active construction site while supporting project planning through surveying activities.</p>
+                    <p><strong>My Role:</strong> Site Safety Officer & Project Surveyor</p>
+                    <p><strong>Key Achievements:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Developed and enforced safety protocols reducing incident rates by 40%</li>
+                        <li>Conducted site surveys supporting accurate project planning and execution</li>
+                        <li>Coordinated safety training sessions for construction teams</li>
+                        <li>Maintained detailed safety documentation and incident reporting</li>
+                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-tag">Safety Management</span>
+                        <span class="skill-tag">Risk Assessment</span>
+                        <span class="skill-tag">Team Coordination</span>
+                        <span class="skill-tag">Documentation</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Community Water Resource Management Program</h3>
+                    <div class="project-meta">
+                        <span><strong>Duration:</strong> November 2023</span>
+                        <span><strong>Location:</strong> Sapati Ile, Kwara State</span>
+                    </div>
+                    <p><strong>Challenge:</strong> Promoting sustainable water practices and environmental awareness in rural communities while building local capacity.</p>
+                    <p><strong>My Role:</strong> Community Engagement Coordinator & Program Manager</p>
+                    <p><strong>Key Achievements:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Organized educational workshops reaching 200+ community members</li>
+                        <li>Collaborated with local organizations to establish sustainable practices</li>
+                        <li>Developed water conservation awareness campaigns</li>
+                        <li>Created resource management protocols for community implementation</li>
+                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-tag">Stakeholder Management</span>
+                        <span class="skill-tag">Program Coordination</span>
+                        <span class="skill-tag">Community Engagement</span>
+                        <span class="skill-tag">Educational Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Management Tools -->
+        <div class="section">
+            <h2>Project Management Tools Proficiency</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>📊 Microsoft Project</h3>
+                    <p>Advanced project scheduling and resource management capabilities for enterprise-level project planning.</p>
+                    <ul class="tool-features">
+                        <li>Gantt chart creation and critical path analysis</li>
+                        <li>Resource allocation and workload balancing</li>
+                        <li>Timeline planning and milestone tracking</li>
+                        <li>Cost management and budget tracking</li>
+                        <li>Progress reporting and variance analysis</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <h3>📋 Asana</h3>
+                    <p>Team collaboration and task management for complex project coordination and workflow optimization.</p>
+                    <ul class="tool-features">
+                        <li>Project timeline and milestone management</li>
+                        <li>Team collaboration and communication</li>
+                        <li>Task assignment and progress tracking</li>
+                        <li>Custom fields and automation setup</li>
+                        <li>Reporting and dashboard creation</li>
+                    </ul>
+                </div>
+
+                <div class="tool-card">
+                    <h3>📌 Trello</h3>
+                    <p>Visual workflow management and agile project organization for quick team coordination and task tracking.</p>
+                    <ul class="tool-features">
+                        <li>Kanban board setup and management</li>
+                        <li>Card organization and labeling systems</li>
+                        <li>Team collaboration and file sharing</li>
+                        <li>Workflow automation with Butler</li>
+                        <li>Integration with other productivity tools</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+            <h2>Technical Skills & Certifications</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>🔧 Technical Proficiencies</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Microsoft Office Suite</span>
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">WEAP Model</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Quality Control</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>🎯 Core Competencies</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Leadership & Organization</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Critical Thinking</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Adaptability</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>📜 Certifications</h3>
+                    <p><strong>Health, Safety & Environment (HSE)</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>HSE Level 1, 2, & 3 Certification</li>
+                        <li>Hybrid HSE Certification</li>
+                    </ul>
+                    <div class="skills-list">
+                        <span class="skill-tag">Risk Assessment</span>
+                        <span class="skill-tag">Safety Management</span>
+                        <span class="skill-tag">Environmental Compliance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="section summary">
+            <h2>Ready to Contribute</h2>
+            <p>I'm actively seeking project management internship opportunities where I can apply my technical background, leadership experience, and PM tool proficiency to drive successful project outcomes. Let's discuss how I can contribute to your team's success.</p>
+            <a href="mailto:Oyun.ruth@gmail.com" class="cta-button">Get In Touch</a>
+        </div>
+    </div>
+</body>
+      </html>
